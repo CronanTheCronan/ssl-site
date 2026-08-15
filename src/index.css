@@ -1,0 +1,79 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-canvas: #0b1220;
+  --color-surface: #0f172a;
+  --color-surface-raised: #152036;
+  --color-navy-deep: #1e3a8a;
+  --color-navy: #2563eb;
+  --color-blue: #3b82f6;
+  --color-accent: #38bdf8;
+  --color-ink: #ffffff;
+  --color-ink-soft: #e2e8f0;
+  --color-muted: #94a3b8;
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI',
+    Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem;
+  }
+
+  body {
+    @apply bg-canvas text-ink-soft font-sans antialiased;
+    margin: 0;
+    min-height: 100vh;
+  }
+
+  ::selection {
+    background: color-mix(in srgb, var(--color-blue) 40%, transparent);
+    color: white;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    background-image: linear-gradient(
+      115deg,
+      #1e3a8a 0%,
+      #2563eb 45%,
+      #3b82f6 70%,
+      #38bdf8 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .bg-signal-gradient {
+    background-image: linear-gradient(135deg, #1e3a8a 0%, #2563eb 50%, #3b82f6 100%);
+  }
+
+  .border-subtle {
+    border-color: rgb(255 255 255 / 0.1);
+  }
+
+  .card-surface {
+    @apply rounded-2xl border border-white/10 bg-surface/80 backdrop-blur-sm;
+  }
+
+  .signal-grid {
+    background-image:
+      radial-gradient(ellipse 80% 50% at 50% -20%, rgb(37 99 235 / 0.18), transparent),
+      radial-gradient(ellipse 60% 40% at 100% 0%, rgb(56 189 248 / 0.06), transparent),
+      linear-gradient(rgb(255 255 255 / 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(255 255 255 / 0.03) 1px, transparent 1px);
+    background-size:
+      auto,
+      auto,
+      48px 48px,
+      48px 48px;
+  }
+}
