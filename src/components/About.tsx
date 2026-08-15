@@ -16,22 +16,22 @@ export function About() {
         title={aboutCompany.title}
       />
 
-      <div className="grid gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:gap-14">
-        <div className="space-y-4 text-base leading-relaxed text-muted">
-          {aboutCompany.paragraphs.map((p) =>
-            p === 'The human keeps the keys.' ? (
-              <p
-                key={p}
-                className="text-lg font-medium tracking-tight text-ink-soft sm:text-xl"
-              >
-                {p}
-              </p>
-            ) : (
-              <p key={p}>{p}</p>
-            ),
-          )}
-        </div>
+      <div className="max-w-none space-y-4 text-base leading-relaxed text-muted">
+        {aboutCompany.paragraphs.map((p) =>
+          p === 'The human keeps the keys.' ? (
+            <p
+              key={p}
+              className="text-lg font-medium tracking-tight text-ink-soft sm:text-xl"
+            >
+              {p}
+            </p>
+          ) : (
+            <p key={p}>{p}</p>
+          ),
+        )}
+      </div>
 
+      <div className="mt-16 grid gap-10 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:items-start lg:gap-14">
         <aside className="card-surface overflow-hidden self-start">
           <img
             src={founder.image}
@@ -42,19 +42,12 @@ export function About() {
             className="aspect-[4/5] w-full object-cover object-top grayscale"
           />
           <div className="border-t border-white/10 p-5">
-            <p className="text-lg font-semibold text-white">{founder.name}</p>
-            <p className="mt-0.5 text-sm text-accent">{founder.role}</p>
+            <h3 className="text-lg font-semibold tracking-tight text-white sm:text-xl">
+              {founder.name}
+            </h3>
+            <p className="mt-0.5 text-sm font-medium text-accent">{founder.role}</p>
           </div>
         </aside>
-      </div>
-
-      <div className="mt-16 grid gap-12 lg:grid-cols-[0.9fr_1.1fr]">
-        <div>
-          <h3 className="text-2xl font-semibold tracking-tight text-white">
-            {founder.name}
-          </h3>
-          <p className="mt-1 text-sm font-medium text-accent">{founder.role}</p>
-        </div>
         <div className="space-y-4 text-sm leading-relaxed text-muted sm:text-base">
           {founder.paragraphs.map((p) => (
             <p key={p.slice(0, 64)}>{p}</p>
